@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numéro Téléphone Aléatoire</title>
+</head>
+<body>
+  <button id="phoneButton">Appeler</button>
+
+  <script>
+    const phoneNumbers = ['+1234567890', '+0987654321', '+1122334455']; // Liste des numéros de téléphone
+    let lastShown = localStorage.getItem('lastPhoneNumber'); // Récupérer le dernier numéro affiché
+
+    // Fonction pour choisir un numéro aléatoire qui n'est pas le dernier affiché
+    function getRandomPhoneNumber() {
+      const filteredNumbers = phoneNumbers.filter(num => num !== lastShown);
+      const randomNumber = filteredNumbers[Math.floor(Math.random() * filteredNumbers.length)];
+      localStorage.setItem('lastPhoneNumber', randomNumber); // Mettre à jour le dernier numéro affiché
+      return randomNumber;
+    }
+
+    // Affecter un numéro aléatoire au bouton
+    document.getElementById('phoneButton').textContent = getRandomPhoneNumber();
+    
+    // Ajouter un événement pour appeler ce numéro lorsque l'utilisateur clique sur le bouton
+    document.getElementById('phoneButton').addEventListener('click', function() {
+      const phoneNumber = this.textContent;
+      window.location.href = `tel:${phoneNumber}`;
+    });
+  </script>
+</body>
+</html>
