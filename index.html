@@ -3,31 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Numéro Téléphone Aléatoire</title>
+  <title>Numéros Téléphone Aléatoires</title>
+  <!-- Importation de TailwindCSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <button id="phoneButton">Appeler</button>
+<body class="bg-gray-100">
 
+  <!-- Section principale -->
+  <section class="container mx-auto py-10 px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Contactez-nous</h2>
+
+    <!-- Grille de 6 blocs, 3 par ligne -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Bloc 1 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Numéro 1</h3>
+        <div id="block1" class="space-y-4">
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+        </div>
+      </div>
+
+      <!-- Bloc 2 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Numéro 2</h3>
+        <div id="block2" class="space-y-4">
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+        </div>
+      </div>
+
+      <!-- Bloc 3 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Numéro 3</h3>
+        <div id="block3" class="space-y-4">
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+        </div>
+      </div>
+
+      <!-- Bloc 4 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Numéro 4</h3>
+        <div id="block4" class="space-y-4">
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+        </div>
+      </div>
+
+      <!-- Bloc 5 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Numéro 5</h3>
+        <div id="block5" class="space-y-4">
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+        </div>
+      </div>
+
+      <!-- Bloc 6 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Numéro 6</h3>
+        <div id="block6" class="space-y-4">
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn hidden bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+          <button class="phone-btn bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script JavaScript -->
   <script>
-    const phoneNumbers = ['+1234567890', '+0987654321', '+1122334455']; // Liste des numéros de téléphone
-    let lastShown = localStorage.getItem('lastPhoneNumber'); // Récupérer le dernier numéro affiché
+    // Numéros de téléphone pour chaque bloc
+    const phoneNumbers = [
+      ['+1234567890', '+0987654321', '+1122334455'],
+      ['+2233445566', '+3344556677', '+4455667788'],
+      ['+5566778899', '+6677889900', '+7788990011'],
+      ['+8899001122', '+9900112233', '+1002233445'],
+      ['+2003344556', '+3344556677', '+4556677889'],
+      ['+5566889900', '+6677990011', '+7788001122']
+    ];
 
-    // Fonction pour choisir un numéro aléatoire qui n'est pas le dernier affiché
+    // Fonction pour choisir un numéro aléatoire parmi les trois de chaque bloc
     function getRandomPhoneNumber() {
-      const filteredNumbers = phoneNumbers.filter(num => num !== lastShown);
-      const randomNumber = filteredNumbers[Math.floor(Math.random() * filteredNumbers.length)];
-      localStorage.setItem('lastPhoneNumber', randomNumber); // Mettre à jour le dernier numéro affiché
-      return randomNumber;
+      return phoneNumbers.map(nums => nums[Math.floor(Math.random() * nums.length)]);
     }
 
-    // Affecter un numéro aléatoire au bouton
-    document.getElementById('phoneButton').textContent = getRandomPhoneNumber();
-    
-    // Ajouter un événement pour appeler ce numéro lorsque l'utilisateur clique sur le bouton
-    document.getElementById('phoneButton').addEventListener('click', function() {
-      const phoneNumber = this.textContent;
-      window.location.href = `tel:${phoneNumber}`;
-    });
+    // Fonction pour afficher un numéro et cacher les autres
+    function updatePhoneButtons() {
+      const selectedNumbers = getRandomPhoneNumber();
+
+      for (let i = 0; i < phoneNumbers.length; i++) {
+        const buttons = document.querySelectorAll(`#block${i + 1} .phone-btn`);
+        const randomIndex = Math.floor(Math.random() * buttons.length);
+
+        // Cache tous les boutons
+        buttons.forEach(btn => btn.classList.add('hidden'));
+
+        // Affiche un bouton aléatoire avec le numéro sélectionné
+        buttons[randomIndex].textContent = `Appeler ${selectedNumbers[i]}`;
+        buttons[randomIndex].classList.remove('hidden');
+        buttons[randomIndex].onclick = () => {
+          window.location.href = `tel:${selectedNumbers[i]}`;
+        };
+      }
+    }
+
+    // Initialisation au chargement de la page
+    updatePhoneButtons();
   </script>
+
 </body>
 </html>
